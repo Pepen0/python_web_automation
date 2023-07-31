@@ -84,3 +84,48 @@ def open_youtuber_video(
 
 
 # open_youtuber_video("Kai Cenat")
+
+
+def click_text_on_google(
+    x,
+):  # this function will open google and press the Gmail button
+    peno = webdriver.Chrome()
+    peno.get("https://www.google.ca")
+    print(peno.title)  # should show google
+
+    time.sleep(3)
+
+    Click_button = peno.find_element(By.LINK_TEXT, x)
+    Click_button.click()
+    print(peno.title)  # should show gmail
+    time.sleep(20)
+
+
+# click_text_on_google("Gmail")
+
+
+def click_partial_text_on_google(
+    x, y
+):  # this function will open google and press the Gmail button and create an account
+    peno = webdriver.Chrome()
+    peno.get("https://www.google.ca")
+    print(peno.title)  # should show "google"
+
+    time.sleep(3)
+
+    Click_button = peno.find_element(By.LINK_TEXT, x)
+    Click_button.click()
+    print(
+        peno.title
+    )  # should show "Gmail: Private and secure email at no cost | Google Workspace"
+
+    time.sleep(3)
+
+    Click_button = peno.find_element(By.PARTIAL_LINK_TEXT, y)
+    Click_button.click()
+    print(peno.title)  # should show "Gmail"
+
+    time.sleep(20)
+
+
+# click_partial_text_on_google("Gmail", "Create")
