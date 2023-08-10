@@ -129,3 +129,50 @@ def click_partial_text_on_google(
 
 
 # click_partial_text_on_google("Gmail", "Create")
+
+# CSS celector testing ("https://www.w3schools.com/cssref/trysel.php")
+
+
+def Get_intern_list_Katinovation():
+    peno = webdriver.Chrome()
+    peno.get("https://katinnovation.com/apropos")
+    page_title = peno.title
+
+    time.sleep(3)
+    print(page_title)
+
+    intern_list = peno.find_elements(By.CSS_SELECTOR, "div .stag figcaption")
+    print("-Done-")
+    time.sleep(3)
+
+    for list in intern_list:
+        print(list.text)
+
+    time.sleep(20)
+
+
+# Get_intern_list_Katinovation()
+
+
+def change_all_pages_pics_to_me(x):
+    peno = webdriver.Chrome()
+    peno.get(x)
+
+    My_picture = (
+        "https://katinnovation.com/assets/media/equipe/Stagiaires/penoelopfp.jpeg"
+    )
+
+    time.sleep(3)
+
+    imagelist = peno.find_elements(By.TAG_NAME, "img")
+
+    for image in imagelist:
+        peno.execute_script(
+            'arguments[0].setAttribute("src", arguments[1]);', image, My_picture
+        )
+
+    time.sleep(20)
+    peno.quit()
+
+
+change_all_pages_pics_to_me("https://katinnovation.com/apropos")
